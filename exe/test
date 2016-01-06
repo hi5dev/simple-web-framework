@@ -1,0 +1,23 @@
+#!/usr/bin/env ruby
+
+# Load the test dependencies.
+require 'minitest/autorun'
+
+# Load the framework.
+require_relative '../lib/framework'
+
+# Find the test path.
+TEST_PATH = File.expand_path('../../test', __FILE__)
+
+# Find the full path to any names specified in the script's arguments.
+test_files = ARGV.map {|name| File.join(TEST_PATH, "#{name}_test.rb") }
+
+# Run all of the tests if no arguments were passed.
+test_files = Dir[File.join(TEST_PATH, '/**/*_test.rb')] if test_files.empty?
+
+# Print the full path to all of the tests that are going to be run.
+p test_files
+puts
+
+# Run the tests.
+test_files.each {|f| load f }

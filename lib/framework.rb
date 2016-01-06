@@ -1,6 +1,7 @@
 require 'erb'
 
-module Framework
-end
+$LOAD_PATH << File.expand_path('..', __FILE__)
 
-require_relative 'framework/version'
+module Framework
+  autoload :VERSION, 'framework/version'
+end
