@@ -1,0 +1,10 @@
+#!/usr/bin/env ruby
+
+require_relative '../lib/framework'
+
+server = Framework::WEBrickServer.new do |config|
+  config[:Port] = 3000
+  config[:DocumentRoot] = File.expand_path('../../public', __FILE__)
+end
+
+server.start
